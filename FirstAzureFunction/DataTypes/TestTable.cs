@@ -4,9 +4,9 @@ using System.Text;
 
 namespace FirstAzureFunction.DataTypes
 {
-    public class Test_Table
+    public class TestTable
     {
-        public string Username { get; set; }
-        public string Code { get; set; }          
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
     }
 }

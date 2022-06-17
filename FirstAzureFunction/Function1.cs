@@ -18,25 +18,25 @@ namespace FirstAzureFunction
     {
         [FunctionName("GetDataFromDB")]
         public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
-            [Sql("SELECT * FROM [dbo].[test_table] where Code=@code",
+            [HttpTrigger(AuthorizationLevel.Function, "get", Route = null)] HttpRequest req,
+            [Sql("SELECT * FROM [SalesLT].[CustomerAddress] where CustomerID=@id",
             CommandType = System.Data.CommandType.Text,
-            Parameters ="@code={Query.code}",
-            ConnectionStringSetting = "sqldb_connection")] IEnumerable<Test_Table> result, 
+            Parameters ="@id={Query.id}",
+            ConnectionStringSetting = "sqldb_connection")] IEnumerable<CustomerAddress> result, 
             
             ILogger log)
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
 
-            string code = req.Query["code"];
+            string id = req.Query["id"];
 
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             dynamic data = JsonConvert.DeserializeObject(requestBody);
-            code = code ?? data?.code;
+            id = id ?? data?.id;
 
-            string responseMessage = string.IsNullOrEmpty(code)
+            string responseMessage = string.IsNullOrEmpty(id)
                 ? "This HTTP triggered function executed and updated successfully. Pass a name in the query string or in the request body for a personalized response."
-                : $"Hello, {result.FirstOrDefault().Username}. This HTTP triggered function executed successfully.";
+                : $"User with id: {id}, has address type {result.FirstOrDefault().AddressType}. This HTTP triggered function executed successfully.";
 
             return new OkObjectResult(responseMessage);
         }

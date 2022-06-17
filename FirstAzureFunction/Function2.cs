@@ -17,18 +17,18 @@ namespace Company.Function
         // Visit https://aka.ms/sqlbindingsoutput to learn how to use this output binding
         [FunctionName("SetDataToDB")]
          public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Function, "post", Route = "addNewUser")] HttpRequest req,
-            [Sql("[dbo].[test_table]", ConnectionStringSetting = "sqldb_connection")] IAsyncCollector<Test_Table> testTableItems,
+            [HttpTrigger(AuthorizationLevel.Function, "post", Route = "addNewCustomer")] HttpRequest req,
+            [Sql("[dbo].[TestTable]", ConnectionStringSetting = "sqldb_connection")] IAsyncCollector<TestTable> testTableItems,
             ILogger log)
         {
             log.LogInformation("C# HTTP trigger with SQL Output Binding function processed a request.");
 
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-            Test_Table testTableItem = JsonConvert.DeserializeObject<Test_Table>(requestBody);
+            TestTable testTableItem = JsonConvert.DeserializeObject<TestTable>(requestBody);
 
             await testTableItems.AddAsync(testTableItem);
             await testTableItems.FlushAsync();
-            List<Test_Table> resultList = new List<Test_Table> { testTableItem };
+            List<TestTable> resultList = new List<TestTable> { testTableItem };
 
             return new OkObjectResult(resultList);
         }
