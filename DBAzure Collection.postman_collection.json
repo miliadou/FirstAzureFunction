@@ -1,0 +1,93 @@
+{
+	"info": {
+		"_postman_id": "f5bc5aaa-d11a-4c60-855d-8a84d8e9ea71",
+		"name": "DBAzure Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3548290"
+	},
+	"item": [
+		{
+			"name": "GetDataFromDB",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://ppc-test1.azurewebsites.net/api/GetDataFromDB?code=t3rZmE_-wm9ErY7gMWJokCzGNlPKDQrKF8ne3jHfnb5oAzFuURrD7w==&id=29485",
+					"protocol": "https",
+					"host": [
+						"ppc-test1",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"GetDataFromDB"
+					],
+					"query": [
+						{
+							"key": "code",
+							"value": "t3rZmE_-wm9ErY7gMWJokCzGNlPKDQrKF8ne3jHfnb5oAzFuURrD7w=="
+						},
+						{
+							"key": "id",
+							"value": "29485"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SetDataToDB",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Username\":\"Peter\",\r\n    \"Code\":\"6\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://ppc-test1.azurewebsites.net/api/GetDataFromDB?code=t3rZmE_-wm9ErY7gMWJokCzGNlPKDQrKF8ne3jHfnb5oAzFuURrD7w==&id=29485",
+					"protocol": "https",
+					"host": [
+						"ppc-test1",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"GetDataFromDB"
+					],
+					"query": [
+						{
+							"key": "code",
+							"value": "t3rZmE_-wm9ErY7gMWJokCzGNlPKDQrKF8ne3jHfnb5oAzFuURrD7w=="
+						},
+						{
+							"key": "id",
+							"value": "29485"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
