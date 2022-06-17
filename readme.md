@@ -8,4 +8,4 @@ Add a local.settings.json file in project with the DB connection string with the
     "sqldb_connection": "..."
   }
 }
-Add your public ip in Azure Database as a new firewall rule 
+Add your public ip in Azure Database as a new firewall rule. Find sql server resource -> click Networking -> Tab Public access -> Firewall Rules
